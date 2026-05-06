@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full Page Video with Cursor Ripple Effect</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* Prevents scrolling */
+        }
+        #video-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+        }
+        video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw; /* Full viewport width */
+            height: 100vh; /* Full viewport height */
+            object-fit: cover; /* Ensures the video covers the area without distortion */
+            z-index: 1; /* Video below the ripples */
+        }
+        .ripple {
+            position: absolute;
+            background: rgba(234, 156, 1, 0.624); /* Semi-transparent white for water-like ripple */
+            border-radius: 50%;
+            transform: scale(0);
+            animation: ripple-effect 0.8s linear;
+            pointer-events: none;
+            z-index: 2; /* Ripples above the video */
+        }
+        @keyframes ripple-effect {
+            to {
+                transform: scale(4); /* Adjust scale for ripple size */
+                opacity: 0;
+            }
+        }
+        #redirect-box {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black box */
+            padding: 15px;
+            border-radius: 8px;
+            z-index: 3; /* Box above everything */
+            color: rgb(255, 255, 255);
+            text-align: center;
+        }
+        #redirect-box a {
+            color: #000000;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 20px;
+            background-color: #ff9d00; /* Blue button */
+            border-radius: 5px;
+            display: inline-block;
+        }
+        #redirect-box a:hover {
+            background-color: #ff9d00; /* Darker blue on hover */
+        }
+    </style>
+</head>
+<body>
+    <div id="video-container">
+        <video autoplay muted loop playsinline>
+            <source src="underconst.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div id="redirect-box">
+            <p>Click below to redirect</p>
+            <a href="index_1.html" >GO BACK</a>
+        </div>
+    </div>
+
+    <script>
+        const container = document.getElementById('video-container');
+        
+        container.addEventListener('mousemove', (e) => {
+            const ripple = document.createElement('span');
+            const size = Math.random() * 50 + 50; // Random ripple size between 50-100px
+            ripple.classList.add('ripple');
+            ripple.style.width = `${size}px`;
+            ripple.style.height = `${size}px`;
+            ripple.style.left = `${e.clientX - size / 2}px`;
+            ripple.style.top = `${e.clientY - size / 2}px`;
+            container.appendChild(ripple);
+            
+            // Remove ripple after animation completes
+            setTimeout(() => {
+                ripple.remove();
+            }, 800); // Matches animation duration
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Poovarasan A — Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- ✏️ FONTS — swap the Google Fonts URL to change typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<!-- ════════ CURSOR ════════ -->
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+
+<!-- ════════ CANVAS BACKGROUND ════════ -->
+<canvas id="bg-canvas"></canvas>
+
+<div class="wrapper">
+
+  <!-- ════════════════════════════════════
+       NAV
+       ✏️ Edit logo text and nav links here
+  ════════════════════════════════════ -->
+  <nav>
+    <div class="nav-logo">ASPI</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile nav -->
+  <div class="mobile-nav" id="mobile-nav">
+    <a href="#about" class="nav-close-trigger">About</a>
+    <a href="#projects" class="nav-close-trigger">Projects</a>
+    <a href="#skills" class="nav-close-trigger">Skills</a>
+    <a href="#contact" class="nav-close-trigger">Contact</a>
+  </div>
+
+
+  <!-- ════════════════════════════════════
+       HERO
+       ✏️ Edit name, subtitle, and buttons
+  ════════════════════════════════════ -->
+  <section class="hero" id="home">
+    <div class="hero-inner">
+
+      <!-- LEFT: Text -->
+      <div class="hero-text">
+        <!-- ✏️ Status tag text -->
+        <div class="hero-tag">Available for Work · 2025 Graduate</div>
+
+        <!-- ✏️ Your name -->
+        <h2>Hello, I'm<br><em>Poovarasan A</em></h2>
+
+        <!-- ✏️ Your short bio tagline -->
+        <p class="hero-subtitle">
+          <strong>UI/UX Designer</strong> &amp; <strong>Fullstack Developer</strong>
+          crafting immersive digital experiences — from pixel-perfect interfaces to intelligent ML systems.
+        </p>
+
+        <!-- ✏️ Add/remove/edit buttons here -->
+        <div class="hero-buttons">
+          <a href="#projects" class="btn btn-primary">
+            <i class="fa-solid fa-eye"></i> See Projects
+          </a>
+          <a href="#contact" class="btn btn-outline">
+            <i class="fa-solid fa-paper-plane"></i> Contact Me
+          </a>
+          <a href="https://drive.google.com/file/d/1b_ZYGd5397AOEA_wgp77etfYa0byeIHC/view?usp=sharing"
+             target="_blank" class="btn btn-outline">
+            <i class="fa-solid fa-file-lines"></i> Resume
+          </a>
+          <a href="https://kickstore.tebex.io/?action=preview&signature=f594edc24d7682ca6d8968c1fbffc4355ac2bd45c8aeab68ce6714b9b4787a76&expires=1756489532"
+             target="_blank" class="btn btn-coral">
+            <i class="fa-solid fa-bag-shopping"></i> My Store
+          </a>
+        </div>
+      </div>
+
+      <!-- RIGHT: Photo + Music Player Notch -->
+      <div class="hero-photo-wrap">
+        <div class="photo-glow"></div>
+        <div class="photo-ring"></div>
+
+        <!-- ✏️ Replace placeholder.png with your actual photo filename -->
+        <img src="placeholder.png" alt="Poovarasan A">
+
+        <!-- ════════ MUSIC PLAYER NOTCH ════════
+             Controls are driven by player.js
+             Edit the playlist in player.js below
+        ════════ -->
+        <div class="music-notch" id="music-notch">
+          <!-- Album art disc (spins when playing) -->
+          <div class="notch-art" id="notch-art">
+            <i class="fa-solid fa-music"></i>
+          </div>
+
+          <!-- Track info -->
+          <div class="notch-info">
+            <div class="notch-label">Now Playing</div>
+            <div class="notch-track" id="notch-track">Loading…</div>
+            <div class="notch-artist" id="notch-artist">—</div>
+          </div>
+
+          <!-- Controls -->
+          <div class="notch-controls">
+            <button class="notch-btn" id="btn-prev" title="Previous">
+              <i class="fa-solid fa-backward-step"></i>
+            </button>
+            <button class="notch-btn play-btn" id="btn-play" title="Play / Pause">
+              <i class="fa-solid fa-play" id="play-icon"></i>
+            </button>
+            <button class="notch-btn" id="btn-next" title="Next">
+              <i class="fa-solid fa-forward-step"></i>
+            </button>
+          </div>
+
+          <!-- EQ animation bars -->
+          <div class="eq-bars paused" id="eq-bars">
+            <div class="eq-bar"></div>
+            <div class="eq-bar"></div>
+            <div class="eq-bar"></div>
+            <div class="eq-bar"></div>
+          </div>
+        </div><!-- end .music-notch -->
+
+      </div><!-- end .hero-photo-wrap -->
+    </div>
+  </section><!-- end .hero -->
+
+  <div class="divider"></div>
+
+  <!-- ════════════════════════════════════
+       ABOUT
+       ✏️ Edit bio text and stats
+  ════════════════════════════════════ -->
+  <section id="about" class="section reveal">
+    <div class="section-label">Who I Am</div>
+    <h2 class="section-title">About Me</h2>
+    <div class="about-grid">
+
+      <!-- ✏️ Your bio paragraphs -->
+      <div class="about-desc">
+        <p>
+          I'm a Computer Science Engineering student specialising in
+          <strong>UI/UX Design</strong>, <strong>Fullstack Development</strong>,
+          and <strong>Machine Learning</strong>. I love creating intuitive digital
+          experiences that blend creativity with technical precision.
+        </p>
+        <p>
+          When I'm not shipping projects, I'm earning certifications on AWS,
+          exploring deep-learning architectures, or designing scalable full-stack
+          applications that solve real-world problems.
+        </p>
+      </div>
+
+      <!-- ✏️ Change the numbers and labels below -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-number">4+</div>
+          <div class="stat-label">Major Projects</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">8+</div>
+          <div class="stat-label">Certifications</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">98%</div>
+          <div class="stat-label">Client Satisfaction</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">2025</div>
+          <div class="stat-label">Graduation Year</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ════════════════════════════════════
+       PROJECTS
+       ✏️ Duplicate a .project-card block
+          to add a new project.
+  ════════════════════════════════════ -->
+  <section id="projects" class="section-wide reveal">
+    <div class="inner">
+      <div class="section-label">What I've Built</div>
+      <h2 class="section-title">Projects</h2>
+      <div class="projects-grid">
+
+        <!-- PROJECT 1 -->
+        <div class="project-card">
+          <div class="project-num">01</div>
+          <div class="project-title">Cardiomegaly Detection</div>
+          <div class="project-tech">
+            <span class="tag">YOLOv5</span>
+            <span class="tag">Python</span>
+            <span class="tag">Deep Learning</span>
+          </div>
+          <div class="project-links">
+            <a href="mainkk.html" class="link-btn">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i> Visit Site
+            </a>
+          </div>
+        </div>
+
+        <!-- PROJECT 2 -->
+        <div class="project-card">
+          <div class="project-num">02</div>
+          <div class="project-title">Driver Drowsiness Detection</div>
+          <div class="project-tech">
+            <span class="tag">Python</span>
+            <span class="tag">OpenCV</span>
+            <span class="tag">CNN</span>
+          </div>
+          <div class="project-links">
+            <a href="mainkk.html" class="link-btn">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i> Visit Site
+            </a>
+          </div>
+        </div>
+
+        <!-- PROJECT 3 -->
+        <div class="project-card">
+          <div class="project-num">03</div>
+          <div class="project-title">Task Manager Web App</div>
+          <div class="project-tech">
+            <span class="tag">Python</span>
+            <span class="tag">Django</span>
+            <span class="tag">MySQL</span>
+          </div>
+          <div class="project-links">
+            <a href="mainkk.html" class="link-btn">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i> Visit Site
+            </a>
+          </div>
+        </div>
+
+        <!-- PROJECT 4 -->
+        <div class="project-card">
+          <div class="project-num">04</div>
+          <div class="project-title">Car Dealership System</div>
+          <div class="project-tech">
+            <span class="tag">HTML5</span>
+            <span class="tag">JSON</span>
+            <span class="tag">MySQL</span>
+          </div>
+          <div class="project-links">
+            <a href="mainkk.html" class="link-btn">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i> Visit Site
+            </a>
+            <a href="https://cardealership-website.netlify.app" target="_blank" class="link-btn">
+              <i class="fa-solid fa-play"></i> Live Demo
+            </a>
+          </div>
+        </div>
+
+        <!-- PROJECT 5 -->
+        <div class="project-card">
+          <div class="project-num">05</div>
+          <div class="project-title">Book Finder</div>
+          <div class="project-tech">
+            <span class="tag">HTML5</span>
+            <span class="tag">JSON</span>
+            <span class="tag">MySQL</span>
+          </div>
+          <div class="project-links">
+            <a href="mainkk.html" class="link-btn">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i> Visit Site
+            </a>
+            <a href="https://book-finder-poo.netlify.app" target="_blank" class="link-btn">
+              <i class="fa-solid fa-play"></i> Live Demo
+            </a>
+          </div>
+        </div>
+
+      </div><!-- end .projects-grid -->
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ════════════════════════════════════
+       SKILLS & CERTIFICATIONS
+       ✏️ Edit skill items and cert rows
+  ════════════════════════════════════ -->
+  <section id="skills" class="section reveal">
+    <div class="section-label">Expertise</div>
+    <h2 class="section-title">Skills &amp; Certifications</h2>
+    <div class="two-col">
+
+      <!-- Skills list — ✏️ edit or add <li class="skill-item"> rows -->
+      <ul class="skill-list">
+        <li class="skill-item"><i class="fa-solid fa-pen-nib"></i> UI/UX — Figma, Photoshop, Blender, 3ds Max</li>
+        <li class="skill-item"><i class="fa-solid fa-code"></i> Python · C · C++ · Django · MySQL</li>
+        <li class="skill-item"><i class="fa-solid fa-brain"></i> Machine Learning · Deep Learning · OpenCV · YOLOv5</li>
+        <li class="skill-item"><i class="fa-brands fa-aws"></i> AWS Cloud &amp; DevOps Basics</li>
+        <li class="skill-item"><i class="fa-solid fa-drafting-compass"></i> AutoCAD · SketchUp · MS Office · Ubuntu</li>
+        <li class="skill-item"><i class="fa-solid fa-gamepad"></i> Unreal Engine · EMU8086 · Code Lite</li>
+      </ul>
+
+      <!-- Certs — ✏️ edit or add <li class="cert-item"> rows -->
+      <div>
+        <ul class="cert-list">
+          <li class="cert-item">
+            <span class="cert-name">AWS Cloud Technical Essentials</span>
+            <a href="https://coursera.org/verify/LZ3JGMPPCA27" target="_blank" class="cert-verify">Verify ↗</a>
+          </li>
+          <li class="cert-item">
+            <span class="cert-name">DevOps on AWS</span>
+            <a href="https://coursera.org/share/f6164cb7ff39686835779f38a78fcce1" target="_blank" class="cert-verify">Verify ↗</a>
+          </li>
+          <li class="cert-item">
+            <span class="cert-name">Machine Learning</span>
+            <a href="https://coursera.org/share/5c6785c06e589ce1c5b36b9f63b23095" target="_blank" class="cert-verify">Verify ↗</a>
+          </li>
+          <li class="cert-item">
+            <span class="cert-name">Data Analytics Essentials</span>
+            <a href="https://www.credly.com/badges/62de3a8a-c058-4ba1-8394-103b81471932" target="_blank" class="cert-verify">Verify ↗</a>
+          </li>
+        </ul>
+        <a href="https://www.coursera.org/user/1fcb831958a7c45539bd9a6c69afa0b9"
+           target="_blank" class="more-link">
+          View all certifications <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ════════════════════════════════════
+       CONTACT
+       ✏️ Edit email, phone, social links
+  ════════════════════════════════════ -->
+  <section id="contact" class="section reveal">
+    <div class="section-label">Get In Touch</div>
+    <h2 class="section-title">Contact</h2>
+
+    <div class="contact-grid">
+      <a href="mailto:poovarasan1967@gmail.com" class="contact-card">
+        <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
+        <div>
+          <div class="contact-label">Primary Email</div>
+          <div class="contact-value">poovarasan1967@gmail.com</div>
+        </div>
+      </a>
+      <a href="mailto:pa1720@srmist.edu.in" class="contact-card">
+        <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
+        <div>
+          <div class="contact-label">Academic Email</div>
+          <div class="contact-value">pa1720@srmist.edu.in</div>
+        </div>
+      </a>
+      <a href="tel:+917339392143" class="contact-card">
+        <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
+        <div>
+          <div class="contact-label">Phone</div>
+          <div class="contact-value">Call if needed!</div>
+        </div>
+      </a>
+      <div class="contact-card">
+        <div class="contact-icon"><i class="fa-solid fa-location-dot"></i></div>
+        <div>
+          <!-- ✏️ Change location -->
+          <div class="contact-label">Location</div>
+          <div class="contact-value">Tamil Nadu, India</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ✏️ Add/remove social links -->
+    <div class="social-row">
+      <a href="https://www.linkedin.com/in/poovarasan-arulganesh" target="_blank" class="social-btn">
+        <i class="fa-brands fa-linkedin"></i> LinkedIn
+      </a>
+      <a href="https://github.com/pa1720" target="_blank" class="social-btn">
+        <i class="fa-brands fa-github"></i> GitHub
+      </a>
+      <a href="https://www.codechef.com/users/srmsci_68" target="_blank" class="social-btn">
+        <i class="fa-solid fa-code"></i> CodeChef
+      </a>
+    </div>
+  </section>
+
+  <!-- ════════════════ FOOTER ════════════════ -->
+  <footer>
+    <p>© 2025 <span>Poovarasan A</span> · Designed &amp; Built with ❤️</p>
+  </footer>
+
+</div><!-- end .wrapper -->
+
+<!-- ════════ SCRIPTS ════════ -->
+<script src="player.js"></script>
+<script src="main.js"></script>
+
+</body>
+</html>
