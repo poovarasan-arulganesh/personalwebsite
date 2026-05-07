@@ -233,10 +233,20 @@ nav {
 }
 .btn-coral:hover { background: rgba(231,111,81,0.1); border-color: var(--accent3); }
 
-/* ── Hero photo ── */
-.hero-photo-wrap {
-  position: relative; flex-shrink: 0;
+/* ── Hero photo column wrapper ── */
+.hero-photo-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  flex-shrink: 0;
   animation: fadeUp .6s .15s ease both;
+}
+
+/* ── Hero photo ring/glow (no longer needs position:relative on notch) ── */
+.hero-photo-wrap {
+  position: relative;
+  display: inline-block;
 }
 .photo-glow {
   position: absolute; inset: -24px; border-radius: 50%;
@@ -261,24 +271,28 @@ nav {
   border: 3px solid rgba(42,157,143,0.22);
   position: relative; z-index: 1;
   box-shadow: var(--shadow-hover);
+  display: block;
 }
 
 /* =====================================================
-   MUSIC PLAYER NOTCH
+   MUSIC PLAYER NOTCH — centered below photo
 ===================================================== */
 .music-notch {
-  position: absolute;
-  bottom: -22px; left: 50%; transform: translateX(-50%);
+  /* No longer absolute — sits in normal flow below photo */
+  position: relative;
+  left: auto; bottom: auto; transform: none;
   z-index: 10;
   background: var(--card);
   border: 1px solid var(--border-card);
   border-radius: var(--radius-pill);
   padding: 8px 14px 8px 8px;
   display: flex; align-items: center; gap: 10px;
-  min-width: 245px; max-width: 300px;
+  width: 100%;
+  max-width: 300px;
   box-shadow: var(--shadow-hover);
   animation: fadeUp .6s .5s ease both;
   white-space: nowrap;
+  transition: border-color .6s ease, box-shadow .6s ease;
 }
 .notch-art {
   width: 36px; height: 36px;
@@ -506,6 +520,7 @@ footer span { color: var(--accent); }
 ===================================================== */
 @media (max-width: 920px) {
   .hero-inner { flex-direction: column-reverse; gap: 50px; text-align: center; }
+  .hero-photo-col { width: 100%; }
   .hero-buttons { justify-content: center; }
   .hero-subtitle { margin-left: auto; margin-right: auto; }
   .about-grid { grid-template-columns: 1fr; gap: 40px; }
@@ -516,7 +531,7 @@ footer span { color: var(--accent); }
 }
 @media (max-width: 600px) {
   .hero-photo-wrap img { width: 210px; height: 210px; }
-  .music-notch { min-width: 210px; max-width: 260px; }
+  .music-notch { max-width: 280px; }
   .projects-grid { grid-template-columns: 1fr; }
   .stats-grid { grid-template-columns: 1fr 1fr; }
   .section { padding: 70px 5%; }
