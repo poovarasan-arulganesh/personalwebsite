@@ -35,22 +35,22 @@
 ══════════════════════════════════════ */
 const PLAYLIST = [
   {
-    title:  "Ocean Breeze",
-    artist: "Your Artist Here",
-    file:   "music/song1.mp3",
-    theme:  "ocean"
+    title:  "Paiya BGM",
+    artist: "U1",
+    file:   "music/paiyabgm.mp3",
+    theme:  "lavender"
   },
   {
-    title:  "Forest Walk",
-    artist: "Your Artist Here",
-    file:   "music/song2.mp3",
+    title:  "Vellake BGM",
+    artist: "aniruth",
+    file:   "music/vellakebgm.mp3",
     theme:  "forest"
   },
   {
-    title:  "Golden Hour",
-    artist: "Your Artist Here",
-    file:   "music/song3.mp3",
-    theme:  "sunset"
+    title:  "YenPirandaiMagane",
+    artist: "Don't Know",
+    file:   "music/YenPirandaiMagane.mp3",
+    theme:  "midnight"
   }
   /*
     ADD MORE SONGS — copy a block above and paste here.
