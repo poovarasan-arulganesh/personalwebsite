@@ -307,7 +307,7 @@ button{font-family:var(--font-b);}
 <!-- ═══ HEADER ═══ -->
 <div class="page-header">
   <h1>🎮 Game Arcade</h1>
-  <p>Five mini-games. Pick from the radial menu or the shelf below.</p>
+  <p>Six mini-games. Pick from the radial menu or the shelf below.</p>
 </div>
 
 <!-- ═══ RADIAL MENU ═══ -->
@@ -393,6 +393,14 @@ const GAMES = [
     color:'#b08a3e', badge:'Retro',badgeColor:'#b08a3e',
     controls:'← → Arrow Keys · Drag paddle on mobile',
     hasDpad:false
+  },
+  {
+    id:'quenqvc', name:'Quenq VC', emoji:'🚀',
+    desc:'Explore Quenq — the next-gen venture platform.',
+    color:'#5b6af0', badge:'External',badgeColor:'#5b6af0',
+    controls:'Opens in a new tab',
+    hasDpad:false,
+    externalUrl:'https://vc.quenq.com'
   }
 ];
 
@@ -499,6 +507,21 @@ function showOverlay(title,msg,btnText){
 function hideOverlay(){overlay.style.display='none';}
 
 function loadGame(id){
+  const g=GAMES.find(x=>x.id===id);
+
+  // External redirect game
+  if(g && g.externalUrl){
+    window.open(g.externalUrl, '_blank');
+    // Briefly highlight the card/item to give visual feedback
+    document.querySelectorAll('.radial-item').forEach(el=>el.classList.toggle('active',el.dataset.id===id));
+    document.querySelectorAll('.shelf-card').forEach(el=>el.classList.toggle('active-card',el.dataset.id===id));
+    setTimeout(()=>{
+      document.querySelectorAll('.radial-item').forEach(el=>el.classList.remove('active'));
+      document.querySelectorAll('.shelf-card').forEach(el=>el.classList.remove('active-card'));
+    }, 600);
+    return;
+  }
+
   if(animFrame)cancelAnimationFrame(animFrame);
   currentGame=id;
   gameOver=false; gameStarted=false;
