@@ -42,14 +42,14 @@ const PLAYLIST = [
   },
   {
     title:  "Vellake BGM",
-    artist: "aniruth",
+    artist: "Aniruth",
     file:   "music/vellakebgm.mp3",
     theme:  "forest"
   },
   {
-    title:  "YenPirandaiMagane",
-    artist: "Don't Know",
-    file:   "music/YenPirandaiMagane.mp3",
+    title:  "After Hours",
+    artist: "Weeknd",
+    file:   "music/afterhours.mp3",
     theme:  "midnight"
   }
   /*
